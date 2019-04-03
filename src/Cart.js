@@ -10,13 +10,22 @@ class Cart extends React.Component {
     this.state = { cartItems: [] };
   }
 
-  handleAddToCart = (productName, price) => {
+  handleAddToCart = (productName, price, stock) => {
     var tempCartItems = [...this.state.cartItems];
     var in_cart = 0;
+    if (stock === 0) {
+      alert("The selected item is out of stock!")
+      return;
+    }
     for (var item of tempCartItems) {
       if (productName === item.productName) {
-        item.count += 1;
-        in_cart = 1;
+        if (item.count === stock) {
+          alert("You've selected too many " + productName + "s!");
+          in_cart = 1;
+        } else {
+          item.count += 1;
+          in_cart = 1;
+        }
       }
     }
     if (in_cart === 0) {
@@ -29,7 +38,6 @@ class Cart extends React.Component {
       )
     }
     this.setState({cartItems: tempCartItems});
-    console.log(this.state.cartItems)
   }
 
   render() {
@@ -39,7 +47,7 @@ class Cart extends React.Component {
       productName={prod.name}
       price={prod.cost}
       onAddToCart={this.handleAddToCart}
-      //limit={prod.stock}
+      limit={prod.stock}
       />
     );
 

@@ -25,7 +25,7 @@ function Product(props) {
             </div>
           </div>
           <div class="ui bottom attached button" onClick={
-            () => {props.onAddToCart(props.productName, props.price)}
+            () => {props.onAddToCart(props.productName, props.price, props.limit)}
           }>
             <i class="add icon" ></i>
               Add to Cart
