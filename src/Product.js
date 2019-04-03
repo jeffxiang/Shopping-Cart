@@ -1,8 +1,7 @@
 import React from "react";
 
 function Product(props) {
-  var clicks = 0;
-
+  /*var clicks = 0;
   function addToCart() {
     clicks += 1;
     if (props.limit === 0) {
@@ -15,6 +14,7 @@ function Product(props) {
       alert("You have " + clicks + " " + props.productName + "s in your cart!");
     }
   }
+  */
 
   return (
       <div class="card">
@@ -24,7 +24,9 @@ function Product(props) {
               Price: ${props.price}
             </div>
           </div>
-          <div class="ui bottom attached button" onClick={addToCart}>
+          <div class="ui bottom attached button" onClick={
+            () => {props.onAddToCart(props.productName, props.price)}
+          }>
             <i class="add icon" ></i>
               Add to Cart
           </div>
