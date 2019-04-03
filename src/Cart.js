@@ -40,6 +40,22 @@ class Cart extends React.Component {
     this.setState({cartItems: tempCartItems});
   }
 
+  handleRemoveFromCart = (productName) => {
+    var tempCartItems = [...this.state.cartItems];
+    for (var i = 0; i < tempCartItems.length; i++) {
+      var item = tempCartItems[i];
+      if (productName === item.productName) {
+        if (item.count > 0) {
+          item.count -= 1;
+          if (item.count === 0) {
+            tempCartItems.splice(i, 1);
+          }
+          this.setState({cartItems: tempCartItems});
+        }
+      }
+    }
+  }
+
   render() {
     let products = ProductData.products;
     let mapped_products = products.map(prod =>
@@ -47,6 +63,7 @@ class Cart extends React.Component {
       productName={prod.name}
       price={prod.cost}
       onAddToCart={this.handleAddToCart}
+      onRemoveFromCart={this.handleRemoveFromCart}
       limit={prod.stock}
       />
     );

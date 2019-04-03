@@ -30,6 +30,12 @@ function Product(props) {
             <i class="add icon" ></i>
               Add to Cart
           </div>
+          <div class="ui bottom attached button" onClick={
+            () => {props.onRemoveFromCart(props.productName)}
+          }>
+            <i class="remove icon"></i>
+              Remove from Cart
+          </div>
       </div>
   );
 }

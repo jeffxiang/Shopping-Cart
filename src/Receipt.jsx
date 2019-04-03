@@ -14,6 +14,14 @@ class Receipt extends React.Component {
     );
   }
 
+  calculateTotalCost() {
+    var cost = 0;
+    for (var item of this.props.items) {
+      cost += item.price * item.count;
+    }
+    return cost.toFixed(2);
+  }
+
   render() {
     const items = this.props.items;
     return (
@@ -22,7 +30,7 @@ class Receipt extends React.Component {
         {items.map(this.renderItem)}
         <div className="receipt-item">
           <div className="total">Total:</div>
-          <div className="total">$0</div>
+          <div className="total">${this.calculateTotalCost()}</div>
         </div>
       </div>
     );
