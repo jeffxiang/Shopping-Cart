@@ -1,20 +1,6 @@
 import React from "react";
 
 function Product(props) {
-  /*var clicks = 0;
-  function addToCart() {
-    clicks += 1;
-    if (props.limit === 0) {
-      alert("This item is out of stock!");
-    }
-    else if (clicks > props.limit) {
-      alert("There are too many " + props.productName + "s in your cart!");
-    }
-    else {
-      alert("You have " + clicks + " " + props.productName + "s in your cart!");
-    }
-  }
-  */
 
   return (
       <div class="card">
